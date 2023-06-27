@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="valid.css"></head>
+<body>
+    <div class =main>
+        <form onsubmit="return validation()">
+            <table border="2px" style="background-image:url('img.jpg'); border-radius:5%;">
+                <tr>
+                    <td>
+        <marquee>Form Validation</marquee>
+    <label>Username</label>
+    <input type="text" id="user" placeholder="Enter your Name" autocomplete="off"/>
+    <br><span id="userr" style="color:red; font-weight:800;"></span>
+ <br/>   
+<br/>
+    <label>Password</label>
+    <input type="text" id="pass" placeholder="Enter your password" autocomplete="off/">
+    <br/><span id="passs" style="color:lightcoral; font-weight:bold;"></span>
+    <br/>
+<br/>
+    <label>Confirm password</label>
+    <input type="text" id="con" autocomplete="off/" >
+    <br/><span id="conn" style="color:lightcoral; font-weight:bold ;"></span>
+<br/>
+<br/>
+     <label>Email</label>
+     <input type="text" id="email" placeholder="Enter your email" autocomplete="off/">
+     <br/><span id="emaill" style="color:lightcoral; font-weight:bold ;"></span>
+<br/>
+<br/>
+<label>Mobile number</label> 
+<input type="text" id="mob" placeholder="Enter your phone number"autocomplete="off/">
+<br/><span id="mobb" style="color:lightcoral; font-weight:bold ;"></span>
+<br/>
+<br/>
+<input type="submit" id="sub">
+</td>
+</tr>
+    </table>
+    </form>
+    <script>
+		function validation() {
+			var user = document.getElementById('user').value;
+            document.getElementById('userr').innerHTML="";
+            var pass = document.getElementById('pass').value;
+            document.getElementById('passs').innerHTML="";
+            var con = document.getElementById('con').value;
+            document.getElementById('conn').innerHTML="";
+            var email = document.getElementById('email').value;
+            document.getElementById('emaill').innerHTML="";
+            var mob = document.getElementById('mob').value;
+            document.getElementById('mobb').innerHTML="";
+            
+			if (user == "") {
+				document.getElementById('userr').innerHTML = "Please fill the user name";
+				return false;
+			}
+
+			if ((user.length <= 5) || (user.length > 20)) {
+				document.getElementById('userr').innerHTML = "User length must be between 5 to 20";
+				return false;
+			}
+			if (!isNaN(user)) {
+				document.getElementById('userr').innerHTML = "Only characters are allowed";
+				return false;
+			}
+            if (pass == "") {
+				document.getElementById('passs').innerHTML = "**please write your password**";
+				return false;
+
+			}
+			if ((pass.length <= 5) || (pass.length > 20)) {
+				document.getElementById('passs').innerHTML = "Password length must be between 5 and 20";
+				return false;
+			}
+			if (pass != con) {
+				document.getElementById('conn').innerHTML = "Password are not matching";
+				return false;
+			}
+
+
+			if (con == "") {
+				document.getElementById('conn').innerHTML = "Please fill the confirm field";
+				return false;
+
+			}
+
+			if (email == "") {
+				document.getElementById('emaill').innerHTML = "please write your email";
+				return false;
+
+			}
+
+			if (email.indexOf('@') <= 0) {
+				document.getElementById('emaill').innerHTML = "@ invalid position";
+				return false;
+			}
+
+			if ((email.charAt(email.length - 4) != '.') && (email.charAt(email.length - 3) != '.')) {
+				document.getElementById('emaill').innerHTML = ". invalid position";
+				return false;
+			}
+
+
+
+			if (mob == "") {
+				document.getElementById('mobb').innerHTML = "**please write your mobile no";
+				return false;
+
+			}
+			if (isNaN(mob)) {
+				document.getElementById('mobb').innerHTML = "**user must write digits only";
+				return false;
+			}
+			if (mob.length != 10) {
+				document.getElementById('mobb').innerHTML = "**mobile no. must be 10 digits only";
+				return false;
+			}
+
+        }
+            </script>
+      
+</body>
+</html>
